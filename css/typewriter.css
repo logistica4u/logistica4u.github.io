@@ -1,0 +1,32 @@
+.typewriter {
+    display: inline-block;
+}
+
+.typewriter-text {
+    font-family: 'Futura', sans-serif;
+    font-size: 5em;
+    font-weight: 300;
+    color: #333;
+    overflow: hidden;
+    border-right: 5px solid orange;
+    white-space: nowrap;
+    /* letter-spacing: .15em; */
+    animation: 
+        typing 3.5s infinite alternate,
+        cursor 0.4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    0%, 10%, 100% {
+        width: 0;
+    }
+    70%, 90% {
+        width: 100%;
+    }
+}

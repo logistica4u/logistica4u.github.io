@@ -1,0 +1,23 @@
+#numbers {
+    justify-content: space-evenly;
+    /* margin: 50px; */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#numbers div {
+    width: 100px;
+    margin-top: 20px;
+}
+
+#numbers i,
+h1,
+p {
+    padding: 5px 0;
+}
+
+#numbers i {
+    font-size: 35px;
+}

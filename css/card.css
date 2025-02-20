@@ -1,0 +1,110 @@
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    /* Center contents cross axis wise */
+    width: 100%;
+    /* box-sizing: border-box; */
+}
+
+
+
+.card {
+    background: rgb(64, 64, 69);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.popup-container {
+    background: rgb(44, 44, 44);
+    padding: 20px;
+    border-radius: 25px;
+    margin: 50px auto;
+    /* Center horizontally */
+    max-width: 90%;
+    /* Ensure it doesn't exceed screen width */
+    max-height: 80vh;
+    /* Ensure it doesn't exceed viewport height */
+    /* overflow-y: auto; */
+    /* Add vertical scrolling if needed */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
+}
+
+.popup-container h2 {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    right: 0px;
+    text-align: center;
+}
+
+.popup:target {
+    display: flex;
+}
+
+.popup-description {
+    margin: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.popup-thumbnails {
+    display: flex;
+    margin: 20px 0px;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    max-height: 80vh;
+    /* Adjust as needed */
+}
+
+.popup-thumbnails img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.popup a.close-card {
+    z-index: 1;
+    position: absolute;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    /* Ensure proper centering */
+    line-height: 1;
+}

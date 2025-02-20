@@ -1,0 +1,125 @@
+<div style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <img class="logo" src="images/logo.png" alt="Logistica Logo">
+</div>
+<div id="welcome">
+    <div>
+        <h1>Welcome to Logistica</h1>
+        <p>Logistica is your one-stop solution for all logistics needs. We specialize in providing top-notch
+            services and products, including Tshirt, Notebooks, Letters, Crests, Certificates event kits, and
+            more.
+            Our mission is to deliver excellence and innovation to our clients in Bangladesh and beyond.</p>
+    </div>
+</div>
+<!-- <h1 class="row">
+    PRODUCTS
+</h1> -->
+<hr style="border-color: rgb(0, 0, 0);">
+<h1 class="row">
+    PROJECTS </h1>
+<div id="card-container"></div>
+<hr style="border-color: rgb(0, 0, 0);">
+<div id="numbers">
+    <div> <i class="bi bi-people large"></i>
+        <h1>100+</h1>
+        <p>Satisfied Customers</p>
+    </div>
+    <div> <i class="bi bi-geo-alt large"></i>
+        <h1>12+</h1>
+        <p>Divisions</p>
+    </div>
+    <div> <i class="bi bi-building large"></i>
+        <h1>100+</h1>
+        <p>Educational Institutes</p>
+    </div>
+</div>
+<script>
+    function loadProjects() {
+        console.log('Loading projects...');
+        // Wait a bit for the DOM to load
+        fetch('https://raw.githubusercontent.com/AvikArefin/logistics/refs/heads/main/config.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                const cardContainer = document.getElementById('card-container');
+
+                Object.keys(jsonData.folders).forEach(folderKey => {
+                    const folder = jsonData.folders[folderKey];
+                    const thumbnail = `https://raw.githubusercontent.com/AvikArefin/logistics/refs/heads/main/${folder.files[0]}`;
+
+                    // Create card element
+                    const card = document.createElement('a');
+                    card.href = `#popup-${folderKey}`;
+                    card.className = 'card';
+
+                    // Add thumbnail image
+                    const img = document.createElement('img');
+                    img.src = thumbnail;
+                    img.alt = `${folderKey} Thumbnail`;
+                    card.appendChild(img);
+
+                    // Add folder name
+                    const span = document.createElement('p');
+                    span.textContent = folderKey.toUpperCase();
+                    card.appendChild(span);
+
+                    cardContainer.appendChild(card);
+
+
+                    // Create popup element
+                    const popup = document.createElement('div');
+                    popup.id = `popup-${folderKey}`;
+                    popup.className = 'popup';
+
+                    // Create container div inside popup
+                    const containerDiv = document.createElement('div');
+                    containerDiv.className = 'popup-container';
+
+                    const closeLink = document.createElement('a');
+                    closeLink.href = '#';
+                    closeLink.className = 'close-card';
+
+                    const circleDiv = document.createElement('div');
+                    circleDiv.className = 'circle';
+                    closeLink.appendChild(circleDiv);
+
+                    const icon = document.createElement('i');
+                    icon.className = 'icon bi bi-x large';
+                    closeLink.appendChild(icon);
+
+                    containerDiv.appendChild(closeLink);
+
+                    // Add folder name
+                    const folderName = document.createElement('h2');
+                    folderName.textContent = folderKey.toUpperCase();
+                    containerDiv.appendChild(folderName);
+
+
+                    // Add all images in the folder
+                    const thumbnailsContainer = document.createElement('div');
+                    thumbnailsContainer.className = 'popup-thumbnails';
+
+                    folder.files.forEach(file => {
+                        const fileThumbnail = `https://raw.githubusercontent.com/AvikArefin/logistics/refs/heads/main/${file}`;
+                        const thumbImg = document.createElement('img');
+                        thumbImg.src = fileThumbnail;
+                        thumbImg.alt = `${folderKey} Image`;
+                        thumbnailsContainer.appendChild(thumbImg);
+                    });
+
+                    containerDiv.appendChild(thumbnailsContainer);
+
+                    // Add folder description
+                    const description = document.createElement('div');
+                    description.className = 'popup-description';
+                    description.textContent = folder.description || 'No description available.';
+                    containerDiv.appendChild(description);
+
+                    popup.appendChild(containerDiv);
+                    document.body.appendChild(popup);
+                });
+            })
+            .catch(error => console.error('Error fetching JSON data:', error));
+    }
+
+    // When ever the page reloads run this function
+    loadProjects();
+</script>
