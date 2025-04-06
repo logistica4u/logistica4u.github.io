@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Logistica: Portfolio website showcasing achievements, projects, and products. Keywords: AI, 3D, Logistics, Bangladesh, Logistica, Event Kits.">
-    <meta name="keywords"
-        content="AI, 3D, Logistics, Bangladesh, Logistica, Toys, Clothes, Writingpads, Notebooks, Event Kits">
+    <meta name="description" content="Logistica: Portfolio website showcasing achievements, projects, and products.">
+    <meta name="keywords" content="Logistics, Bangladesh, Logistica, Toys, Clothes, Writingpads, Notebooks, Event Kits">
     <meta name="author" content="Avik Arefin">
     <title>Logistica</title>
     <link href="css/theme.css" rel="stylesheet" type="text/css">
+    <!-- TITLEBAR ICON -->
+    <link rel="icon" href="images/icon.png" type="image/png">
     <!-- ICONS [BOOTSTRAP] -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css?v=1.11.3">
@@ -27,40 +27,46 @@
     <link rel="stylesheet" href="css/marquee.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/numbers.css">
+    <!-- HTMX Library -->
+    <script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.min.js"></script>
 </head>
 
 <body>
     <div class="site">
         <nav>
-            <div class="nav-bar">
-                <ul class="nav-links">
-                    <li>
-                        <a href="#" onclick="loadHTML('./pages/main.html', 'main')">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="loadHTML('./pages/about.html', 'main')">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="loadHTML('./pages/contact.html', 'main')">CONTACT</a>
-                    </li>
-                </ul>
+            <div class="nav-container">
+                <a href="#" hx-get="./pages/main.html" hx-target="#main" hx-swap="innerHTML">
+                    <img src="images/icon.png" alt="Logistica" class="nav-icon">
+                </a>
+
+                <div class="nav-bar">
+                    <ul class="nav-links">
+                        <li>
+                            <a href="#" hx-get="./pages/main.html" hx-target="#main" hx-swap="innerHTML">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#" hx-get="./pages/about.html" hx-target="#main" hx-swap="innerHTML">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href="#" hx-get="./pages/contact.html" hx-target="#main" hx-swap="innerHTML">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-        <!-- <div id="main" style="grid-area:2 / 1 / 3 / 2;"> -->
-        <div id="main">
+        <div id="main" hx-get="./pages/main.html" hx-trigger="load" hx-swap="innerHTML">
+            <!-- Content will be loaded here dynamically -->
         </div>
         <hr style="border-color: rgb(0, 0, 0);">
         <footer id="footer">
             <!-- Social Media Links -->
-            <div class="row" style="padding-top: 10px; padding-bottom: 10px;"><a class="icon-button"
-                    href="https://www.facebook.com/logistica.com24/" target="_blank">
+            <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                <a class="icon-button" href="https://www.facebook.com/logistica.com24/" target="_blank">
                     <div class="circle"></div> <i class="icon bi bi-facebook large"></i>
-                </a><a class="icon-button" href="https://www.instagram.com/logistica.com24" target="_blank">
+                </a>
+                <a class="icon-button" href="https://www.instagram.com/logistica.com24" target="_blank">
                     <div class="circle"></div> <i class="icon bi bi-instagram large"></i>
                 </a>
-                <!--  <a class="icon-button" href="mailto:hey.logistica@gmail.com" target="_blank">
-                <div class="circle"></div> <i class="icon bi bi-whatsapp large"></i>
-            </a> -->
                 <details>
                     <summary>
                         <div class="icon-button">
@@ -92,23 +98,27 @@
                         <h5>Brand</h5>
                         <hr class="footer-divider" />
                         <p><a href="#">Brand Profile</a></p>
-                        <p><a href="#">Contact Us</a></p>
-                        <p><a href="#" onclick="loadHTML('./pages/about.html', 'main')">About Us</a></p>
+                        <p><a href="#" hx-get="./pages/contact.html" hx-target="#main" hx-swap="innerHTML">Contact
+                                Us</a></p>
+                        <p><a href="#" hx-get="./pages/about.html" hx-target="#main" hx-swap="innerHTML">About Us</a>
+                        </p>
                     </div>
                     <div class="footer-column">
                         <h5>Products & Projects</h5>
                         <hr class="footer-divider" />
                         <p><a href="#">Products</a></p>
-                        <p><a href="#">Proejcts</a></p>
+                        <p><a href="#">Projects</a></p>
                     </div>
                     <div class="footer-column">
                         <h5>Others</h5>
                         <hr class="footer-divider" />
                         <p><a href="#">Invest In Us</a></p>
-                        <p><a href="#">Our Social Wing</a></p>
+                        <p><a href="https://bscf.dev" target="_blank" rel="noopener noreferrer">Our Social Wing</a></p>
                         <p><a href="#">Our Partners</a></p>
-                        <p><a href="#" onclick="loadHTML('./pages/privacypolicy.html', 'main')">Privacy Policy</a></p>
-                        <p><a href="#" onclick="loadHTML('./pages/tos.html', 'main')">Terms of Service</a></p>
+                        <p><a href="#" hx-get="./pages/privacypolicy.html" hx-target="#main" hx-swap="innerHTML">Privacy
+                                Policy</a></p>
+                        <p><a href="#" hx-get="./pages/tos.html" hx-target="#main" hx-swap="innerHTML">Terms of
+                                Service</a></p>
                     </div>
                 </div>
                 <div class="slider slider-bottom" reverse="true" style="
@@ -128,7 +138,11 @@
             </div>
         </footer>
     </div>
+    <script>
+        document.body.addEventListener('htmx:afterSwap', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
 </body>
-<script src="app.js"></script>
 
 </html>

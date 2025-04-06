@@ -10,24 +10,25 @@
             Our mission is to deliver excellence and innovation to our clients in Bangladesh and beyond.</p>
     </div>
 </div>
-<!-- <h1 class="row">
-    PRODUCTS
-</h1> -->
-<hr style="border-color: rgb(0, 0, 0);">
-<h1 class="row">
-    PROJECTS </h1>
+
+<h1 class="row"> PROJECTS </h1>
 <div id="card-container"></div>
-<hr style="border-color: rgb(0, 0, 0);">
+
+<h1 class="row"> ACHIEVEMENTS </h1>
+
 <div id="numbers">
-    <div> <i class="bi bi-people large"></i>
+    <div>
+        <i class="bi bi-people"></i>
         <h1>100+</h1>
         <p>Satisfied Customers</p>
     </div>
-    <div> <i class="bi bi-geo-alt large"></i>
+    <div>
+        <i class="bi bi-geo-alt"></i>
         <h1>12+</h1>
-        <p>Divisions</p>
+        <p>Divisions Nationwide</p>
     </div>
-    <div> <i class="bi bi-building large"></i>
+    <div>
+        <i class="bi bi-building"></i>
         <h1>100+</h1>
         <p>Educational Institutes</p>
     </div>
@@ -46,9 +47,9 @@
                     const thumbnail = `https://raw.githubusercontent.com/AvikArefin/logistics/refs/heads/main/${folder.files[0]}`;
 
                     // Create card element
-                    const card = document.createElement('a');
-                    card.href = `#popup-${folderKey}`;
+                    const card = document.createElement('div'); // Changed from 'a' to 'div'
                     card.className = 'card';
+                    card.setAttribute('data-folder', folderKey);
 
                     // Add thumbnail image
                     const img = document.createElement('img');
@@ -61,37 +62,46 @@
                     span.textContent = folderKey.toUpperCase();
                     card.appendChild(span);
 
-                    cardContainer.appendChild(card);
+                    // Add click event to open popup
+                    card.addEventListener('click', function () {
+                        const popup = document.getElementById(`popup-${folderKey}`);
+                        if (popup) {
+                            popup.style.display = 'flex';
+                        }
+                    });
 
+                    cardContainer.appendChild(card);
 
                     // Create popup element
                     const popup = document.createElement('div');
                     popup.id = `popup-${folderKey}`;
                     popup.className = 'popup';
+                    popup.style.display = 'none'; // Hide by default
 
                     // Create container div inside popup
                     const containerDiv = document.createElement('div');
                     containerDiv.className = 'popup-container';
 
-                    const closeLink = document.createElement('a');
-                    closeLink.href = '#';
-                    closeLink.className = 'close-card';
+                    const closeButton = document.createElement('button');
+                    closeButton.className = 'close-card';
+                    closeButton.addEventListener('click', function () {
+                        popup.style.display = 'none';
+                    });
 
                     const circleDiv = document.createElement('div');
                     circleDiv.className = 'circle';
-                    closeLink.appendChild(circleDiv);
+                    closeButton.appendChild(circleDiv);
 
                     const icon = document.createElement('i');
                     icon.className = 'icon bi bi-x large';
-                    closeLink.appendChild(icon);
+                    closeButton.appendChild(icon);
 
-                    containerDiv.appendChild(closeLink);
+                    containerDiv.appendChild(closeButton);
 
                     // Add folder name
                     const folderName = document.createElement('h2');
                     folderName.textContent = folderKey.toUpperCase();
                     containerDiv.appendChild(folderName);
-
 
                     // Add all images in the folder
                     const thumbnailsContainer = document.createElement('div');
@@ -120,6 +130,6 @@
             .catch(error => console.error('Error fetching JSON data:', error));
     }
 
-    // When ever the page reloads run this function
+    // When the page loads, run this function
     loadProjects();
 </script>

@@ -16,25 +16,68 @@
     grid-template-columns: minmax(0, 1fr);
 }
 
+/* Update these existing rules */
 nav {
-    display: flex;
-    justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px 40px;
+    backdrop-filter: blur(5px);
     width: 100%;
-    flex-wrap: wrap-reverse;
-    align-content: space-between;
-    margin-top: 10px;
+    height: 60px;
+    /* Fixed height */
+    box-sizing: border-box;
+}
+
+
+.nav-container {
+    display: flex;
+    align-items: flex-start;
+    /* width: 100%; */
+    /* max-width: 1200px; */
+    height: 100%;
+    /* Take full nav height */
+}
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+    transition: transform 0.3s ease;
+    margin-right: 20px;
+}
+
+
+.nav-icon:hover {
+    transform: scale(1.1);
+}
+
+.nav-bar {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    /* Center vertically */
+    height: 40px;
+    /* Match icon height */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
 }
 
 .nav-links {
-    padding: 15px 25px;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.2);
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 15px;
+    align-items: center;
+    height: 100%;
+    /* Take full nav-bar height */
+    padding: 0 25px;
+    /* Horizontal padding only */
 }
 
 body {
@@ -61,4 +104,13 @@ a {
     width: 100%;
     max-width: 300px;
     object-fit: cover;
+}
+
+.singlepage {
+    padding: 40px;
+    margin: 80px 40px;
+    max-width: 800px;
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }

@@ -1,23 +1,80 @@
 #numbers {
-    justify-content: space-evenly;
-    /* margin: 50px; */
-    padding: 20px;
+    padding: 2rem 1rem;
     display: flex;
     flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.2);
-}
+    justify-content: center;
+    gap: 1.5rem;
+    background: rgb(44, 44, 44);
+    margin: 2rem 0;
+  }
 
-#numbers div {
-    width: 100px;
-    margin-top: 20px;
-}
+  #numbers div {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    min-width: 150px;
+  }
 
-#numbers i,
-h1,
-p {
-    padding: 5px 0;
-}
+  #numbers i {
+    font-size: 2rem;
+    color: #ffe228;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
 
-#numbers i {
-    font-size: 35px;
-}
+  #numbers h1 {
+    font-size: 2.25rem;
+    margin: 0.5rem 0;
+    color: white;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  #numbers p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* Simple hover effect */
+  #numbers div {
+    transition: transform 0.2s ease;
+  }
+  
+  #numbers div:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #numbers {
+      gap: 1rem;
+      padding: 1.5rem 0.5rem;
+    }
+    
+    #numbers div {
+      min-width: 120px;
+      padding: 1rem 0.5rem;
+    }
+    
+    #numbers h1 {
+      font-size: 1.75rem;
+    }
+    
+    #numbers i {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #numbers {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    #numbers div {
+      width: 100%;
+      max-width: 200px;
+    }
+  }

@@ -37,3 +37,7 @@
   background: grey;
   transform: scale(1.2);
 }
+
+details summary {
+  list-style: none; /* Removes the default triangle */
+}
