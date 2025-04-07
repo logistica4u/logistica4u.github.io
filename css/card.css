@@ -83,7 +83,7 @@
     gap: 15px;
     flex-wrap: nowrap;
     /* Changed from wrap to nowrap */
-    justify-content: flex-start;
+    justify-content: center;
     /* Changed from center */
     overflow-x: auto;
     /* Allow horizontal scrolling */
